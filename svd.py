@@ -38,7 +38,7 @@ class SVD:
 			m, n = A.shape
 
 		ATA = A.T.dot(A)
-		eigenvals, V = np.linalg.eig(ATA)
+		eigenvals, V = eig(ATA)
 
 
 		idx = eigenvals.argsort()[::-1]
@@ -48,7 +48,7 @@ class SVD:
 		singularvals = np.sqrt(np.maximum(eigenvals[idx], 0))
 		self.singularvalues = singularvals
 		S = np.zeros((m, n))
-		# print(singularvals.shape)
+
 		S[:min(m, n), :min(m, n)] = np.diag(singularvals)
 
 		U = np.zeros((m, m))
